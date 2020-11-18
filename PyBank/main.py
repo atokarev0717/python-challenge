@@ -24,7 +24,11 @@ with open(budget_data_path) as budget_data_file:
     budget_data_reader = csv.reader(budget_data_file, delimiter=',')
     budget_data_header = next(budget_data_reader)    
     budget_rows = list(budget_data_reader)
-print(budget_rows[0][1])
+pl_start = budget_rows[0][1]
+print(pl_start)
+pl_end = budget_rows[number_of_months-1][1]
+print(pl_end)
+# print(float((pl_end-pl_start)/(number_of_months-1))
 print(number_of_months)
 print(net_total)
     
