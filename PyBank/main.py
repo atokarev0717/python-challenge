@@ -7,10 +7,11 @@ import os
 # Connect to the source file and read it
 budget_data_path = './Resources/budget_data.csv'
 
+rows = []
 with open(budget_data_path) as budget_data_file:
     budget_data_reader = csv.reader(budget_data_file, delimiter=',')
 
-    # using to next method moving through header
+    # using next method to move through header
     budget_data_header = next(budget_data_reader)
     #Calculating number of months and net total using for loop
     number_of_months = 0
@@ -18,19 +19,19 @@ with open(budget_data_path) as budget_data_file:
     for row in budget_data_reader:
         number_of_months += 1
         net_total += int(row[1])
+        #Constructing list of rows to be able to access all values later
+        rows.append(row)
 
-# Resetting csv reader to construct list of rows
-with open(budget_data_path) as budget_data_file:
-    budget_data_reader = csv.reader(budget_data_file, delimiter=',')
-    budget_data_header = next(budget_data_reader)    
-    budget_rows = list(budget_data_reader)
-pl_start = budget_rows[0][1]
-print(pl_start)
-pl_end = budget_rows[number_of_months-1][1]
-print(pl_end)
-# print(float((pl_end-pl_start)/(number_of_months-1))
-print(number_of_months)
 print(net_total)
+print(number_of_months)
+pl_start = rows[0][1]
+pl_end = rows[number_of_months-1][1]
+print(pl_start)
+print(pl_end)
+
+
+
+
     
     
 
