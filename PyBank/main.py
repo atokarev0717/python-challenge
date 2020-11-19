@@ -5,7 +5,7 @@ import csv
 import os
 
 # Connect to the source file and read it
-budget_data_path = './Resources/budget_data.csv'
+budget_data_path = 'Resources/budget_data.csv'
 
 rows = []
 with open(budget_data_path) as budget_data_file:
@@ -24,8 +24,10 @@ with open(budget_data_path) as budget_data_file:
 
 print(net_total)
 print(number_of_months)
-pl_start = rows[0][1]
-pl_end = rows[number_of_months-1][1]
+pl_start = int(rows[0][1])
+pl_end = int(rows[number_of_months-1][1])
+ave_pl_change = float((pl_end - pl_start)/(number_of_months-1))
+print(ave_pl_change)
 print(pl_start)
 print(pl_end)
 
