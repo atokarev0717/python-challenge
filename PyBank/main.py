@@ -10,8 +10,6 @@ budget_data_path = 'Resources/budget_data.csv'
 # creating empty list to hold all rows while executing for loop
 rows = []
 
-#create empty list to hold profit and loss values while executing for loop
-pl_values = []
 with open(budget_data_path) as budget_data_file:
     budget_data_reader = csv.reader(budget_data_file, delimiter=',')
 
@@ -23,21 +21,30 @@ with open(budget_data_path) as budget_data_file:
     for row in budget_data_reader:
         number_of_months += 1
         net_total += int(row[1])
+        
         #Constructing list of rows to be able to access all values later
         rows.append(row)
-        #Create list of profit and loss values for the entire period
-        pl_values.append(int(row[1]))
+        
+#Alternative method to calculate change
+pl_change = [int(rows[i+1][1]) - int(rows[i][1]) for i in range(len(rows)-1)]
+print(min(pl_change))
+print(max(pl_change))
 
-print(min(pl_values))
-print(max(pl_values))
-print(net_total)
-print(number_of_months)
+# Calculating Average Change
 pl_start = int(rows[0][1])
 pl_end = int(rows[number_of_months-1][1])
 ave_pl_change = float((pl_end - pl_start)/(number_of_months-1))
-print(ave_pl_change)
-print(pl_start)
-print(pl_end)
+
+# print(f'Financial Analysis')
+# print('-' * 50)
+# print(
+# f'Total Months: {number_of_months}\n'
+# f'Total: ${net_total}\n'
+# f'Average Change: ${ave_pl_change:.2f}\n'
+# f'Greatest Increase in Profits: '
+# f'Greatest Decrease in Profits: '
+# )
+
 
 
 
