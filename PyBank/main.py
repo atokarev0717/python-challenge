@@ -47,7 +47,7 @@ combined_ls = list(zip(period, pl_change))
 max_period = [i[0] for i in combined_ls if i[1] == max(pl_change)]
 min_period = [i[0] for i in combined_ls if i[1] == min(pl_change)]
 
-
+# creating list holding all the results so it can be added to a csv file
 result = [
     ['Total Months:', number_of_months],
     ['Total:', net_total],
@@ -56,6 +56,7 @@ result = [
     ['Greatest Decrease in Profits', min_period[0], min(pl_change)]
 ]
 
+# crearting and opening new csv file to record results
 result_path = os.path.join('Analysis', 'result.csv')
 with open(result_path, 'w', newline= '') as result_file:
     csvwriter = csv.writer(result_file, delimiter=',' )
