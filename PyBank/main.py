@@ -32,9 +32,6 @@ ave_pl_change = float((pl_end - pl_start)/(number_of_months-1))
 
 #Calculate change of profit and loss for each incremental period
 pl_change = [int(rows[i+1][1]) - int(rows[i][1]) for i in range(len(rows)-1)]
-print(len(pl_change))
-print(min(pl_change))
-print(max(pl_change))
 
 # Remove 1st row from 'rows' list so it can be zipped with pl_change list 
 rows_m = rows.copy()
@@ -49,24 +46,13 @@ combined_ls = list(zip(period, pl_change))
 # Find period in which max and min change occured
 max_period = [i[0] for i in combined_ls if i[1] == max(pl_change)]
 min_period = [i[0] for i in combined_ls if i[1] == min(pl_change)]
-print(max_period)
-print(min_period)
 
-# print(f'Financial Analysis')
-# print('-' * 50)
-# print(
-# f'Total Months: {number_of_months}\n'
-# f'Total: ${net_total}\n'
-# f'Average Change: ${ave_pl_change:.2f}\n'
-# f'Greatest Increase in Profits: '
-# f'Greatest Decrease in Profits: '
-# )
-
-
-
-
-
-    
-    
-
-
+print(f'Financial Analysis')
+print('-' * 50)
+print(
+f'Total Months: {number_of_months}\n'
+f'Total: ${net_total}\n'
+f'Average Change: ${ave_pl_change:.2f}\n'
+f'Greatest Increase in Profits: {max_period[0]} (${max(pl_change)})\n'
+f'Greatest Decrease in Profits: {min_period[0]} (${min(pl_change)})'
+)
