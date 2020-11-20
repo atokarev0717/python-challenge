@@ -47,6 +47,23 @@ combined_ls = list(zip(period, pl_change))
 max_period = [i[0] for i in combined_ls if i[1] == max(pl_change)]
 min_period = [i[0] for i in combined_ls if i[1] == min(pl_change)]
 
+
+result = [
+    ['Total Months:', number_of_months],
+    ['Total:', net_total],
+    ['Average Change:', ave_pl_change],
+    ['Greatest Increase in Profits:', max_period[0], max(pl_change)],
+    ['Greatest Decrease in Profits', min_period[0], min(pl_change)]
+]
+
+result_path = os.path.join('Analysis', 'result.csv')
+with open(result_path, 'w', newline= '') as result_file:
+    csvwriter = csv.writer(result_file, delimiter=',' )
+
+    csvwriter.writerows(result)
+
+
+
 print(f'Financial Analysis')
 print('-' * 50)
 print(
