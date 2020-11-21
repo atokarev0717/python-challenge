@@ -16,21 +16,28 @@ with open(election_path) as election_file:
 
     # Setting initial variables for for loop
     total_votes = 0
-    candidates = []
+    candidates_unique = []
+    candidates_all_records = []
 
     for row in election_reader:
         #Calculating total number of votes
         total_votes +=1
+        
+        #create list of all rows so it can be manipulated later
+        candidates_all_records.append(row[2])
 
-        #Compiling list of unuque candidates
-        if row[2] not in candidates:
-            candidates.append(row[2])
+        #Compiling list of unuque candidates_unique
+        if row[2] not in candidates_unique:
+            candidates_unique.append(row[2])
         
     
     
+candidate_0_votes = sum(1 for i in candidates_all_records if i == candidates_unique[0])
     
+print(candidate_0_votes)
+print(candidates_all_records[0])
+   
     
-    print(candidates)
 
 
 
