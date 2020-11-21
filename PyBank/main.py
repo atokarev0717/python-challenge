@@ -64,7 +64,7 @@ with open(result_path, 'w', newline= '') as result_file:
     csvwriter.writerows(result)
 
 
-
+print(f'```text')
 print(f'Financial Analysis')
 print('-' * 50)
 print(

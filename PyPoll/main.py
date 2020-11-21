@@ -64,6 +64,7 @@ with open(result_path, 'w', newline= '') as result_file:
     csvwriter.writerows(candidates_percent_votescount)
     csvwriter.writerows([['Total Votes', total_votes], ['Winner', winner[0]]])
 
+print(f'```text')
 print(f'Election Results')
 print('-' * 50)
 print(f'Total Votes: {total_votes}')
