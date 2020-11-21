@@ -31,11 +31,21 @@ with open(election_path) as election_file:
             candidates_unique.append(row[2])
         
     
-    
+# Calculating number of votes for each candidate    
 candidate_0_votes = sum(1 for i in candidates_all_records if i == candidates_unique[0])
-    
-print(candidate_0_votes)
-print(candidates_all_records[0])
+candidate_1_votes = sum(1 for i in candidates_all_records if i == candidates_unique[1])
+candidate_2_votes = sum(1 for i in candidates_all_records if i == candidates_unique[2])
+candidate_3_votes = sum(1 for i in candidates_all_records if i == candidates_unique[3])
+
+
+# Calculating % of votes for each candidate
+candidate_0_percent = "{:.2%}".format(candidate_0_votes/total_votes)
+candidate_1_percent = "{:.2%}".format(candidate_1_votes/total_votes)
+candidate_2_percent = "{:.2%}".format(candidate_2_votes/total_votes)
+candidate_3_percent = "{:.2%}".format(candidate_3_votes/total_votes)
+
+print(candidates_unique)
+print(candidate_0_percent)
    
     
 
