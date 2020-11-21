@@ -7,7 +7,6 @@ import os
 # connect to the source file and read it
 election_path = os.path.join('Resources', 'election_data.csv')
 
-
 with open(election_path) as election_file:
     election_reader = csv.reader(election_file, delimiter=',' )
     
@@ -44,8 +43,15 @@ candidate_1_percent = "{:.2%}".format(candidate_1_votes/total_votes)
 candidate_2_percent = "{:.2%}".format(candidate_2_votes/total_votes)
 candidate_3_percent = "{:.2%}".format(candidate_3_votes/total_votes)
 
-print(candidates_unique)
-print(candidate_0_percent)
+candidates_perecent = [candidate_0_percent, candidate_1_percent, candidate_2_percent, candidate_3_percent]
+
+# combine each candidate with its votes percentage
+candidates_and_percent = list(zip(candidates_unique, candidates_perecent))
+
+# determine winner
+winner = [i[0] for i in candidates_and_percent if i[1] == max(candidates_perecent)]
+
+print(winner)
    
     
 
